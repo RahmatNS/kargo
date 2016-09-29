@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Dashboard</title>
+  <script src="jqgrid/js/jquery-1.11.0.min.js" type="text/javascript"></script> 
+  <script src="jqgrid/js/jquery.jqGrid.min.js" type="text/javascript"></script> 
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="dist/css/rdash.css" rel="stylesheet">
+  <link href="jqgrid/css/ui.jqgrid.css" rel="stylesheet">
+  <link href="jqgrid/css/ui.jqgrid-bootstrap.css" rel="stylesheet">
+  <link href="jqgrid/css/ui.jqgrid-bootstrap-ui.css" rel="stylesheet">
+</head>
+<body class="hamburg">
+  <div id="page-wrapper" class="open">
+
+    <!-- Sidebar -->
+
+    <div id="sidebar-wrapper">
+      <ul class="sidebar">
+        <li class="sidebar-main">
+          <a href="#">
+            Dashboard
+            <span class="menu-icon glyphicon glyphicon-transfer"></span>
+          </a>
+        </li>
+        <li class="sidebar-title"><span>NAVIGATION</span></li>
+        <li class="sidebar-list">
+          <a href="#">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <div class="col-xs-4">
+          <a href="https://github.com/rdash/rdash-barebones" target="_blank">
+            Github
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#" target="_blank">
+            About
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#">
+            Support
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- End Sidebar -->
+
+    <div id="content-wrapper">
+      <div class="page-content">
+
+        <!-- Header Bar -->
+
+        <div class="row header">
+          <div class="col-xs-12">
+            <div class="user pull-right">
+              <div class="item dropdown">
+                <a href="#" class="dropdown-toggle">
+                  <img src="img/avatar.jpg">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li class="dropdown-header">
+                    Joe Bloggs
+                  </li>
+                  <li class="divider"></li>
+                  <li class="link">
+                    <a href="#">
+                      Profile
+                    </a>
+                  </li>
+                  <li class="link">
+                    <a href="#">
+                      Menu Item
+                    </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li class="link">
+                    <a href="#">
+                      Logout
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="item dropdown">
+               <a href="#" class="dropdown-toggle">
+                  <i class="fa fa-bell-o"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li class="dropdown-header">
+                    Notifications
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="#">Server Down!</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="meta">
+              <div class="page">
+                Dashboard
+              </div>
+              <div class="breadcrumb-links">
+                Home / Dashboard
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- End Header Bar -->
+
+        <!-- Main Content -->
+        <div class="row">
+            <div class="col-xs-12">
+              <div class="widget">
+                <div class="widget-body">
+                  Tabel
+                  <table id="list" class="scroll"></table>  
+                  <div id="pager" class="scroll" style="text-align:center;"></div> 
+                </div>
+              </div>
+          </div>
+      </div><!-- End Page Content -->
+    </div><!-- End Content Wrapper -->
+  </div><!-- End Page Wrapper -->
+
+  <script type="text/javascript"> 
+      jQuery(document).ready(function(){    
+        jQuery("#list").jqGrid({     
+          url:'http://interview.kargo.co.id/api.html',     
+          datatype: 'json',     
+          mtype: 'GET',     
+          colNames:['Angkutan','Asal', 'Tujuan','Satuan', 'Muatan', 'Dari','Hingga', 'Harga'],     
+          colModel :[        
+            {name:'vehiclegroup__name', index:'vehiclegroup__name', width:55},        
+            {name:'destination__name', index:'destination__name', width:90},        
+            {name:'departure__name', index:'departure__name', width:80, align:'right'},        
+            {name:'metric', index:'metric', width:80, align:'right'},        
+            {name:'loadcap__name', index:'loadcap__name', width:80, align:'right'},        
+            {name:'start_date', index:'start_date', width:80, align:'right'},  
+            {name:'end_date', index:'end_date', width:150}, 
+            {name:'price', index:'price', width:150} ],  
+          caption: 'Promo Truk Balen/Balik Kosong'   
+        });  
+      });  
+    </script> 
+</body>
+</html>
